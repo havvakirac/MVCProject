@@ -1,0 +1,50 @@
+﻿@model SUNetwork.Models.USERS_GROUP
+@{
+    ViewBag.Title = "Grup Bilgileri";
+}
+<div class="Anadiv1">
+    <h2>Grup Bilgileri</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Grup Adı
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GROUP_NAME)
+        </dd>
+
+        <dt>
+            Oluşturma Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATE_DATE)
+        </dd>
+
+    </dl>
+    <p>
+        @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Gruplarım", "Index") |
+        @Html.ActionLink("Grup Gönderileri", "ActivityGroup", new { id = Model.ID })
+    </p>
+    </div>
+  
+<style>
+    .Anadiv1 {
+        width: 850px;
+        height: 100%;
+        margin-top: 1px;
+        text-align: center;
+        text-align-last: left;
+        box-shadow: 20px;
+        vertical-align: top;
+    }
+
+    .Maindiv {
+        align-content: center;
+        margin: 1px 1px 1px 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center
+    }
+</style>

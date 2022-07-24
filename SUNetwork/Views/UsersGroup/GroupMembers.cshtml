@@ -1,0 +1,119 @@
+﻿@model IEnumerable<SUNetwork.Models.USERS>
+
+<div class="Anadiv">
+    <table>
+        <tr>
+            <td>Ad</td>
+            <td>
+                <input type="text" id="txtMemberName" size="20">
+            </td>
+
+            <td>Soyad</td>
+            <td>
+                <input type="text" id="txtMemberSurname" size="20">
+            </td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div class="col-md-offset-2 col-md-10">
+                    <input id="btnAra" value="Ara" onclick="GetAllMemberSource()" type="button" />
+                </div>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr></tr>
+
+    </table>
+    <table>
+        <tr>
+            <td style="width:400px; ;margin-top:1px;padding-top:1px">
+                <div style="margin-top:1px;padding-top:1px" id="divMemeberSource">
+                </div>
+            </td>
+
+        </tr>
+    </table>
+    <div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+    function GetAllMemberSource() {
+        var adi = document.getElementById("txtMemberName").value;
+        var soyadi = document.getElementById("txtMemberSurname").value;
+        var allGrupFlag = "H";
+        var div = document.getElementById('divMemeberSource');
+
+        if (adi == '') {
+            alert("Ad alanı boş olamaz.")
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("SearchProfileDetailForGroup", "UsersGroup")',
+            data: { name: adi, surname: soyadi, departman: "", groupId: 1, allGrpupMemberFlag: allGrupFlag }
+        })
+            .done(function (Sprint) {
+                //var items = '<table class="table">'
+                //$.each(Sprint, function (i, s) {
+                //    items += ''
+                //        + '<tr>'
+                //        + '<td width="40px">' + '<img src="' + s.PHOTO_PATH + '" style="width:40px;height:40px;"/>' + '</td>'
+                //        + '<td>' + s.NAME + ' ' + s.SURNAME + '</td>'
+                //        + '<td><input class="add" value="Davet Gönder" onclick="AddMember("' + s.USER_ID+'")" type="button" /></td>'
+                //        + '</tr>';
+
+                //});
+                //items += '</table>';
+                //div.innerHTML = '';
+
+                //div.innerHTML = items;
+
+            }).fail(function () { alert(" İşleminiz Başarı ile gerçekleştirildi. Lütfen Sayfanızı yenileyiniz!"); });
+
+    }
+
+    $('.add').live('click', function () {
+        alert("tamam");
+    });
+
+    function AddMember(userId) {
+        alert(userId);
+    }
+
+</script>
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>
+
+

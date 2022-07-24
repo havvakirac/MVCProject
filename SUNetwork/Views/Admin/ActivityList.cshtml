@@ -1,0 +1,90 @@
+﻿@model IEnumerable<SUNetwork.Models.SP_ACTIVITY_LIST_Result>
+
+@{
+    ViewBag.Title = "ActivityList";
+}
+
+<div class="Anadiv">
+    <table class="table">
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Ad Soyad
+            </th>
+            <th al>
+                Gönderi
+            </th>
+            <th>
+                Oluşturma Tarihi
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@if (item.PHOTO_PATH != "")
+                {
+                        <img src="@Url.Content(item.PHOTO_PATH)" width="75" height="75" alt="" />
+                    }*@
+
+                    @if (item.PHOTO_PATH != "")
+                    {
+                        <img src="@Url.Content(item.PHOTO_PATH)" width="100" height="100" alt="" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/user.png" width="100" height="100" alt="" />
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kullaniciAdiSoyadi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPTION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UPDATE_DATE)
+                </td>
+                @*<td>
+                    @Html.ActionLink("Detay", "ActivityDetails", new { Controller = "Admin", id = item.ID })
+                </td>*@
+                <td>
+                    @Html.ActionLink("Sil", "ActivityDelete", new { Controller = "Admin", id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+            }
+  
+</style>

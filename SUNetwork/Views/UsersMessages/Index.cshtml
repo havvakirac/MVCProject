@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SUNetwork.Models.MESSAGES>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MESSAGE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEND_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SENDER_USER_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RECEIVER_USER_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RECEIVE_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.READ_FLAG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.READ_DATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UPDATE_DATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MESSAGE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEND_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SENDER_USER_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RECEIVER_USER_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RECEIVE_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.READ_FLAG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.READ_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPDATE_DATE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

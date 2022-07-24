@@ -1,0 +1,148 @@
+﻿@model SUNetwork.Models.USERS
+
+@{
+    ViewBag.Title = "Sil";
+}
+
+<div class="Anadiv">
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.PHOTO_PATH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHOTO_PATH)
+        </dd>
+        <dt>
+            User ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_ID)
+        </dd>
+
+        <dt>
+           Ad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+            Soyad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SURNAME)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            Durumu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS_CODE)
+        </dd>
+
+        <dt>
+           Kullanıcı Tipi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_TYPE)
+        </dd>
+
+        <dt>
+           Başlama Yılı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.START_DATE)
+        </dd>
+
+        <dt>
+           Bitirme Yılı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FINISH_DATE)
+        </dd>
+
+        <dt>
+           Cinsiyet
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENDER)
+        </dd>
+
+        <dt>
+            Bölüm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEPARTMAN_CODE)
+        </dd>
+
+        <dt>
+           Meslek
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JOB)
+        </dd>
+
+        <dt>
+           Güncelleme Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>

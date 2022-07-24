@@ -1,0 +1,159 @@
+﻿@model SUNetwork.Models.ACTIVITY
+
+@{
+    ViewBag.Title = "Gönderi Sil";
+}
+
+<h3>Silmek istediğinize emin misiniz?</h3>
+<div class="Anadiv">
+    <h4>ACTIVITY</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            User Id
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_ID)
+        </dd>
+
+        <dt>
+            Gönderi Tipi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ACTIVITY_TYPE)
+        </dd>
+
+        <dt>
+            Gönderi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPTION)
+        </dd>
+
+        <dt>
+            Oluşturma Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Gönderiyi Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Gönderi Listesi", "ActivityList", new { Controller="Admin"})
+        </div>
+    }
+</div>
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>
+
+
+@*@model IEnumerable<SUNetwork.Models.ACTIVITY>
+
+@{
+    ViewBag.Title = "Gönderiler";
+}
+
+<div class="Anadiv">
+
+    <table class="table">
+        <tr>
+            <th>
+                Kullanıcı Id
+            </th>
+            <th>
+                Paylaşım Tipi
+            </th>
+            <th>
+                Gönderi
+            </th>
+
+            <th>
+                Oluşturma Tarihi
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.USER_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ACTIVITY_TYPE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPTION)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UPDATE_DATE)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Detay", "ActivityDetails", new { Controller = "Admin", id = item.ID })
+                </td>
+                <td>
+                    @Html.ActionLink("Sil", "ActivityDelete", new { Controller = "Admin", id = item.ID })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>*@

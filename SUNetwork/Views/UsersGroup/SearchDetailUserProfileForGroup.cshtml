@@ -1,0 +1,63 @@
+﻿@*<li>@Html.ActionLink("Ara", "DeatilSearchUsersProfileList", "UsersFriendship", null, new { onclick = "this.href += '?name=' + document.getElementById('txtName').value;" })</li>*@
+
+@model SUNetwork.Entity.Group
+
+@{
+    ViewBag.Title = "Kişi Ara";
+}
+@using (Html.BeginForm("SearchDetailUserProfileListForGroup", "UsersGroup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Anadiv">
+        <h3>Bölüme Göre Ara</h3>
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DepartmanCode, "Bölüm", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.DepartmanCode, ViewBag.DepartmanList as SelectList, "Seçiniz")
+                    @Html.ValidationMessageFor(model => model.DepartmanCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+           @Html.HiddenFor(model => model.GroupID, new { @Value = ViewBag.GroupId })
+            @*@Html.TextBoxFor(model => model.GroupID, new { @Value = ViewBag.GroupId })*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Ara" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>

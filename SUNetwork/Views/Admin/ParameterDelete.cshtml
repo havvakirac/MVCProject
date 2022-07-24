@@ -1,0 +1,62 @@
+﻿@model SUNetwork.Models.PARAMETER
+
+@{
+    ViewBag.Title = "Parametre Sil";
+}
+
+
+
+<h3>Silmek istediğinizden emin misiniz?</h3>
+<div class="Anadiv">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VALUE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VALUE)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Parametreyi Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Parametre Listesi", "ParameterList")
+        </div>
+    }
+</div>
+
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+
+    td, th {
+        padding: 0;
+        width: 200px;
+    }
+</style>

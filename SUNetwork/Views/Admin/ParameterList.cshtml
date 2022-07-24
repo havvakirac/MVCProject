@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SUNetwork.Models.PARAMETER>
+
+@{
+    ViewBag.Title = "Parametre Listesi";
+}
+
+<div class="Anadiv">
+    <table class="table">
+        <tr>
+            <th>
+                Parametre Kodu
+            </th>
+            <th>
+                Kod
+            </th>            
+            <th>
+                Parametre
+            </th>
+</tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PARAMETER_CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VALUE)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Parametre Sil", "ParameterDelete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Parametre Ekle", "ParameterCreate", new { /* id=item.PrimaryKey */ }) |
+</div>
+
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+
+    td, th {
+        padding: 0;
+        width: 200px;
+    }
+</style>

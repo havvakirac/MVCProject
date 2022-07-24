@@ -1,0 +1,237 @@
+﻿@*@model IEnumerable<SUNetwork.Models..Models.SP_ETKINLIK_LISTESI_Result>*@
+
+@{
+    ViewBag.Title = "Mesaj";
+}
+
+
+<div class="Anadiv">
+
+     @Html.Hidden("ReceiverUserId", (object)ViewBag.UserId)
+    <div class="divMessage">
+        <textarea id="txtMessage" rows="3" cols="40" placeholder="Mesaj Yaz..."></textarea>
+    </div>
+    <div class="btnGonder">
+        <input id="btnGonder" type="button" value="Gönder" />
+    </div>
+    <div id="divGonderi">
+        <table style="width:100%" id="myTable"></table>
+    </div>
+    <div>
+        <a href="javascript:GetMessage()">Daha Fazla</a>
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        //Erkan ilk yuklendiğine burdan kayıt akliyoruz
+        document.body.onload = GetMessage();
+
+        $('#btnGonder').click(function () {
+            var gonderi = $('#txtMessage').val();
+            var receiverUser = $('#ReceiverUserId').val();
+
+            if (gonderi == '') {
+                alert("Mesaj alanı boş olamaz.")
+                return;
+            }
+
+            var r = confirm("Mesaj gönderilecek devam edilsin mi?");
+            if (r == true) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("MesajOlustur", "UsersFriendship")',
+                    data: { gonIcerik: gonderi, receiverUserId: receiverUser }
+                })
+            .done(function () {
+                //alert("Tamama");
+                $('#txtMessage').val() = '';
+               GetMessage();
+
+            })
+          .fail(function () {
+              alert("Bir Hata Olştu");
+          });
+
+            
+            } else {
+            }
+
+            //________________________________________________________________________________
+        });
+                
+
+        function GetMessage() {
+            //$("#deneme").hide();
+
+            var receiverUser = $('#ReceiverUserId').val();
+            var table = document.getElementById("myTable");
+            var rows = document.getElementById("myTable").getElementsByTagName("tr").length;
+            var satirSayisi = rows / 3;
+            var secilenLink = 'Gonderi';
+            //<img src="~/Content/ResimProfil/2012-03-22 22-27-10.JPG" />
+
+            rows = satirSayisi + 10;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("MesajList", "UsersFriendship")',
+                data: { kayitSayisi: rows, userId2: receiverUser }
+            }).done(function (Sprint) {
+                //table.innerHTML = '';
+                var index = 0;
+                $.each(Sprint, function (i, s) {
+                    var row = table.insertRow(satirSayisi + index);
+                    index++;
+
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+
+                    cell1.innerHTML = s.UserName;
+                    
+                    var item = '<table  width="100%"> <tr>'
+                        + '<td style="color:blue" width="82%">' + s.UserName + '</td>'
+                        + '<td style="color:black" >' + s.UpdateDate + '</td>'
+                        + '<td>';
+                  
+          item+=   '</tr>'
+           + '<tr>'
+              + '<td colspan="2">' + s.Message + '</td>'
+          + '</tr>'
+                        + '</table>';
+
+                    row.style.border = "dotted";
+
+          if (s.SendReceiverFlag == "A") {
+              cell1.innerHTML = '<img src="' + s.PhotoPath + '" style="width:80px; height:80px; border-radius: 300px; -webkit-border-radius:300px;-moz-border-radius:300px;"/>';
+              cell2.innerHTML = item;
+              cell3.innerHTML = "";
+
+              row.style.backgroundColor = "#ccc";
+              
+          }
+          else {
+              cell1.innerHTML = "";
+              cell3.innerHTML = '<img src="' + s.PhotoPath + '" style="width:80px; height:80px; border-radius: 300px; -webkit-border-radius:300px;-moz-border-radius:300px;"/>';
+              cell2.innerHTML = item;
+
+              row.style.backgroundColor = "f1f1f1";
+              
+          }
+
+
+                   
+
+                });
+
+            }).fail(function () { alert("Hata oluştu"); });
+        }
+
+    
+
+
+        function gkoddostu(g2g) {
+            g2g = "div" + g2g;
+            document.getElementById(g2g).style.display = 'block';
+            g1g.style.backgroundColor = 'd8dfea';
+        }
+        function ckoddostu(g1t) {
+            g1t = "div" + g1t;
+            document.getElementById(g1t).style.display = 'none';
+        }
+
+    </script>
+}
+
+<style>
+    div.koddostu-face2box {
+        position: fixed;
+        z-index: 99900;
+    }
+
+
+    div.duyur2ucu-koddostu {
+        display: none;
+        font-family: tahoma,verdana,arial,sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        color: #333333;
+        padding: 20px 15px 40px 15px;
+        overflow: visible;
+        bottom: 8px;
+        right: 230px;
+        width: 325px;
+        border: 5px solid black;
+        background-color: #fff;
+        -moz-box-shadow: 0 0 5px #888;
+        -webkit-box-shadow: 0 0 5px #888;
+        box-shadow: 0 0 5px #888;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+    }
+
+    div.koddostu-face2box {
+        _position: absolute;
+    }
+
+    div.duyur2ucu-koddostu {
+        _bottom: auto;
+        _top: expression(ie6=(document.documentElement.scrollTop+document.documentElement.clientHeight - 52+"px") );
+    }
+
+    div.koddostu-facebox {
+        position: fixed;
+        z-index: 1000;
+    }
+
+    div.duyurucu-koddostu {
+        -moz-box-shadow: 0 0 5px #888;
+        -webkit-box-shadow: 0 0 5px #888;
+        box-shadow: 0 0 5px #888;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding-top: 28px;
+        bottom: -1px;
+        right: 10px;
+        width: 205px;
+        border: 1px solid #5B73A6;
+        background-color: #f2f4f8;
+    }
+
+    div.koddostu-facebox {
+        _position: absolute;
+    }
+
+    div.duyurucu-koddostu {
+        _bottom: auto;
+        _top: expression(ie6=(document.documentElement.scrollTop+document.documentElement.clientHeight - 52+"px") );
+    }
+
+.Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>

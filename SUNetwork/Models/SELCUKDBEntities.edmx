@@ -1,0 +1,1598 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SELCUKDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACTIVATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CODE" Type="int" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ACTIVITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ACTIVITY_TYPE" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="COMMENT" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="COMMENT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAVORITE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FAVORITE_TYPE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GROUP_ACTIVITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GROUP_ID" Type="bigint" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MESSAGES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MESSAGE" Type="text" Nullable="false" />
+          <Property Name="SEND_DATE" Type="datetime" Nullable="false" />
+          <Property Name="SENDER_USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RECEIVER_USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RECEIVE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="READ_FLAG" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="READ_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PARAMETER">
+          <Key>
+            <PropertyRef Name="PARAMETER_CODE" />
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="PARAMETER_CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VALUE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SURNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="USER_TYPE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="START_DATE" Type="smallint" Nullable="false" />
+          <Property Name="FINISH_DATE" Type="smallint" Nullable="false" />
+          <Property Name="PHOTO_PATH" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GENDER" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="DEPARTMAN_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="IS_PRIVATE" Type="char" MaxLength="1" />
+          <Property Name="JOB" Type="nvarchar" MaxLength="20" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS_ACTIVITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ACTIVITY_TYPE" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS_FRENDSHIP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MAIN_USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="START_DATE" Type="datetime" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS_GROUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GROUP_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS_GROUP_MEMBERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USER_ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="GROUP_ID" Type="bigint" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="MEMBER_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="SP_ACTIVITY_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_ALL_GROUPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="TYPE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_DETAIL_SEARCH_USER_PROFILE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="JOB" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_FRIENDSHIP_ACTION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="MAIN_USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ACTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ALL_ACTIONS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ALL_GROUPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TYPE" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_ALL_USER_ACTIVITY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_FOLLOWERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="FOLLOWER_TYPE" Type="int" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_FRIEND_REQUEST_COUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_FRIENDS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_GROUP_ACTIVITY_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_GROUPS_AND_MYGROUPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="TYPE" Type="int" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_MEMBERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_USER_ACTIVITY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_USER_ACTIVITY_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GROUP_ACTIVITY_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_GROUP_INVITATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_MEMBER_ACTION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+          <Parameter Name="STATUS_CODE" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_MESSAGE_ALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MAIN_USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_MESSAGE_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="MAIN_USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID2" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SEARCH_DETAIL_USER_PROFILE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="JOB" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SEARCH_PROFILE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SEARCH_PROFILE_FOR_GROUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="SURNAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="DEPARTMAN" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+          <Parameter Name="ALL_MEMBER_FLAG" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SP_SEARCH_USER_PROFILE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NAME" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_SEARCH_USER_PROFILE_FOR_GROUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DEPARTMENT_CODE" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="GROUP_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_USER_ACTIVITY_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_USERS_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EMAIL" Type="nvarchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_USERS_MESSAGE_ALL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="MAIN_USER_ID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_USERS_MESSAGE_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="KAYIT_SAYISI" Type="int" Mode="In" />
+          <Parameter Name="MAIN_USER_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="USER_ID2" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SELCUKDBModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ACTIVATION" EntityType="Self.ACTIVATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ACTIVITY" EntityType="Self.ACTIVITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COMMENT" EntityType="Self.COMMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAVORITE" EntityType="Self.FAVORITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GROUP_ACTIVITY" EntityType="Self.GROUP_ACTIVITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MESSAGES" EntityType="Self.MESSAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PARAMETER" EntityType="Self.PARAMETER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS_ACTIVITY" EntityType="Self.USERS_ACTIVITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS_FRENDSHIP" EntityType="Self.USERS_FRENDSHIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS_GROUP" EntityType="Self.USERS_GROUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS_GROUP_MEMBERS" EntityType="Self.USERS_GROUP_MEMBERS" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SELCUKDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SELCUKDBEntities1" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_ACTIVITY_LIST" ReturnType="Collection(SELCUKDBModel.SP_ACTIVITY_LIST_Result)">
+          <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_USERS_LOGIN" ReturnType="Collection(SELCUKDBModel.SP_USERS_LOGIN_Result)">
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEARCH_PROFILE" ReturnType="Collection(SELCUKDBModel.SP_SEARCH_PROFILE_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEARCH_USER_PROFILE" ReturnType="Collection(SELCUKDBModel.SP_SEARCH_USER_PROFILE_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_FRIEND_REQUEST_COUNT" ReturnType="Collection(Int32)">
+          <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_FRIENDS" ReturnType="Collection(SELCUKDBModel.SP_GET_FRIENDS_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_FRIENDSHIP_ACTION">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_FOLLOWERS" ReturnType="Collection(SELCUKDBModel.SP_GET_FOLLOWERS_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="FOLLOWER_TYPE" Mode="In" Type="Int32" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEARCH_PROFILE_FOR_GROUP" ReturnType="Collection(SELCUKDBModel.SP_SEARCH_PROFILE_FOR_GROUP_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="SURNAME" Mode="In" Type="String" />
+            <Parameter Name="DEPARTMAN" Mode="In" Type="String" />
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+            <Parameter Name="ALL_MEMBER_FLAG" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ALL_ACTIONS" ReturnType="Collection(SELCUKDBModel.SP_GET_ALL_ACTIONS_Result)">
+          <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MESSAGE_LIST">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+            <Parameter Name="USER_ID2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MESSAGES_LIST">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+            <Parameter Name="USER_ID2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MESSAGE_LIST1">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+            <Parameter Name="USER_ID2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_USERS_MESSAGE_LIST" ReturnType="Collection(SELCUKDBModel.SP_USERS_MESSAGE_LIST_Result)">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+            <Parameter Name="USER_ID2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_USERS_MESSAGE_ALL">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MESSAGE_ALL" ReturnType="Collection(SELCUKDBModel.SP_MESSAGE_ALL_Result)">
+          <Parameter Name="MAIN_USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DETAIL_SEARCH_USER_PROFILE" ReturnType="Collection(SELCUKDBModel.SP_DETAIL_SEARCH_USER_PROFILE_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="JOB" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DETAILS_SEARCH_USER_PROFILE" ReturnType="Collection(SELCUKDBModel.SP_DETAILS_SEARCH_USER_PROFILE_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="JOB" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DETAIL_SEARCH_USER_PROFILE1" ReturnType="Collection(SELCUKDBModel.SP_DETAIL_SEARCH_USER_PROFILE1_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="JOB" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEARCH_DETAIL_USER_PROFILE" ReturnType="Collection(SELCUKDBModel.SP_SEARCH_DETAIL_USER_PROFILE_Result)">
+            <Parameter Name="NAME" Mode="In" Type="String" />
+            <Parameter Name="JOB" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEARCH_USER_PROFILE_FOR_GROUP" ReturnType="Collection(SELCUKDBModel.SP_SEARCH_USER_PROFILE_FOR_GROUP_Result)">
+            <Parameter Name="DEPARTMENT_CODE" Mode="In" Type="String" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_MEMBER_ACTION">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_MEMBERS" ReturnType="Collection(SELCUKDBModel.SP_GET_MEMBERS_Result)">
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="C__MigrationHistory" EntityType="SELCUKDBModel.C__MigrationHistory" />
+          <EntitySet Name="ACTIVATION" EntityType="SELCUKDBModel.ACTIVATION" />
+          <EntitySet Name="ACTIVITY" EntityType="SELCUKDBModel.ACTIVITY" />
+          <EntitySet Name="AspNetRoles" EntityType="SELCUKDBModel.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="SELCUKDBModel.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="SELCUKDBModel.AspNetUserLogins" />
+          <EntitySet Name="AspNetUserRoles" EntityType="SELCUKDBModel.AspNetUserRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="SELCUKDBModel.AspNetUsers" />
+          <EntitySet Name="COMMENT" EntityType="SELCUKDBModel.COMMENT" />
+          <EntitySet Name="FAVORITE" EntityType="SELCUKDBModel.FAVORITE" />
+          <EntitySet Name="GROUP_ACTIVITY" EntityType="SELCUKDBModel.GROUP_ACTIVITY" />
+          <EntitySet Name="MESSAGES" EntityType="SELCUKDBModel.MESSAGES" />
+          <EntitySet Name="PARAMETER" EntityType="SELCUKDBModel.PARAMETER" />
+          <EntitySet Name="USERS" EntityType="SELCUKDBModel.USERS" />
+          <EntitySet Name="USERS_ACTIVITY" EntityType="SELCUKDBModel.USERS_ACTIVITY" />
+          <EntitySet Name="USERS_FRENDSHIP" EntityType="SELCUKDBModel.USERS_FRENDSHIP" />
+          <EntitySet Name="USERS_GROUP" EntityType="SELCUKDBModel.USERS_GROUP" />
+          <EntitySet Name="USERS_GROUP_MEMBERS" EntityType="SELCUKDBModel.USERS_GROUP_MEMBERS" />
+          <FunctionImport Name="SP_GROUP_INVITATION" ReturnType="Collection(SELCUKDBModel.SP_GROUP_INVITATION_Result)">
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_GROUP_INVITATION_COUNT" ReturnType="Collection(Int32)">
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_INVITATION_COUNT" ReturnType="Collection(Int32)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ACTIONS" ReturnType="Collection(SELCUKDBModel.SP_GET_ACTIONS_Result)">
+          <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GROUP_ACTIVITY_LIST">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_GROUP" ReturnType="Collection(SELCUKDBModel.SP_GET_GROUP_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="TYPE" Mode="In" Type="Int32" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_GROUPS" ReturnType="Collection(SELCUKDBModel.SP_GET_GROUPS_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="TYPE" Mode="In" Type="Int32" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_GROUPS_AND_MYGROUPS" ReturnType="Collection(SELCUKDBModel.SP_GET_GROUPS_AND_MYGROUPS_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="TYPE" Mode="In" Type="Int32" />
+            <Parameter Name="STATUS_CODE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_GROUPS1" ReturnType="Collection(SELCUKDBModel.SP_GET_GROUPS1_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="TYPE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ALL_GROUPS" ReturnType="Collection(SELCUKDBModel.SP_ALL_GROUPS_Result)">
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+            <Parameter Name="TYPE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_GROUP_ACTIVITY_LIST" ReturnType="Collection(SELCUKDBModel.SP_GET_GROUP_ACTIVITY_LIST_Result)">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="GROUP_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="SP_GET_USER_ACTIVITY">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_USER_ACTIVITY1">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_USER_ACTIVITY_LIST">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ALL_USER_ACTIVITY" ReturnType="Collection(SELCUKDBModel.SP_GET_ALL_USER_ACTIVITY_Result)">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_USER_ACTIVITY_LIST">
+            <Parameter Name="KAYIT_SAYISI" Mode="In" Type="Int32" />
+            <Parameter Name="USER_ID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GET_ALL_GROUPS" ReturnType="Collection(SELCUKDBModel.SP_GET_ALL_GROUPS_Result)">
+          <Parameter Name="TYPE" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="SP_ACTIVITY_LIST_Result">
+          <Property Type="Int64" Name="RowNum" Nullable="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="kullaniciAdiSoyadi" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="USER_ID" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="SP_USERS_LOGIN_Result">
+          <Property Type="Int64" Name="USER_NO" Nullable="false" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="PASSWORD" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="USER_TYPE" Nullable="false" MaxLength="2" />
+          <Property Type="Int16" Name="START_DATE" Nullable="true" />
+          <Property Type="Int16" Name="FINISH_DATE" Nullable="true" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="GENDER" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="DEPARTMAN_CODE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_SEARCH_PROFILE_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_SEARCH_USER_PROFILE_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_FRIENDS_Result">
+          <Property Type="String" Name="NAME_SURNAME" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="DEPARTMAN_CODE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+          <Property Type="Int16" Name="START_DATE" Nullable="false" />
+          <Property Type="Int16" Name="FINISH_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="GENDER" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="USER_TYPE" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_FOLLOWERS_Result">
+          <Property Type="String" Name="NAME_SURNAME" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="DEPARTMAN_CODE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+          <Property Type="Int16" Name="START_DATE" Nullable="false" />
+          <Property Type="Int16" Name="FINISH_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="GENDER" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="USER_TYPE" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_SEARCH_PROFILE_FOR_GROUP_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="Int64" Name="Column1" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_ALL_ACTIONS_Result">
+          <Property Type="Int32" Name="UNREAD_MESSAGE" Nullable="true" />
+          <Property Type="Int32" Name="UNACCEPTED_REQUEST" Nullable="true" />
+          <Property Type="Int32" Name="FOLLOWERS" Nullable="true" />
+          <Property Type="Int32" Name="FOLLOWING" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_USERS_MESSAGE_LIST_Result">
+          <Property Type="Int64" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="Max" />
+          <Property Type="DateTime" Name="SEND_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="RECEIVE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="READ_FLAG" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="READ_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SEND_RECEIVER_FLAG" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="NAME_SURNAME" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_MESSAGE_ALL_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="MESSAGE" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="SEND_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="RECEIVE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="READ_FLAG" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="READ_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SEND_RECEIVER_FLAG" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="NAME_SURNAME" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_DETAIL_SEARCH_USER_PROFILE_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_DETAILS_SEARCH_USER_PROFILE_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_DETAIL_SEARCH_USER_PROFILE1_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_SEARCH_DETAIL_USER_PROFILE_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_SEARCH_USER_PROFILE_FOR_GROUP_Result">
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="DEPARTMAN_CODE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_MEMBERS_Result">
+          <Property Type="String" Name="NAME_SURNAME" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SURNAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="String" Name="DEPARTMAN_CODE" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="JOB" Nullable="true" MaxLength="20" />
+          <Property Type="Int16" Name="START_DATE" Nullable="false" />
+          <Property Type="Int16" Name="FINISH_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="GENDER" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="USER_TYPE" Nullable="false" MaxLength="2" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="false" MaxLength="1" />
+        </ComplexType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ACTIVATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="Int32" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ACTIVITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVITY_TYPE" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="COMMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="COMMENT1" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="COMMENT_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="FAVORITE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FAVORITE_TYPE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="GROUP_ACTIVITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GROUP_ID" Type="Int64" Nullable="false" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTION" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="MESSAGES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MESSAGE" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SEND_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SENDER_USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVER_USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="READ_FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="READ_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PARAMETER">
+          <Key>
+            <PropertyRef Name="PARAMETER_CODE" />
+            <PropertyRef Name="CODE" />
+          </Key>
+          <Property Name="PARAMETER_CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VALUE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SURNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="USER_TYPE" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="START_DATE" Type="Int16" Nullable="false" />
+          <Property Name="FINISH_DATE" Type="Int16" Nullable="false" />
+          <Property Name="PHOTO_PATH" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GENDER" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DEPARTMAN_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IS_PRIVATE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="JOB" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERS_ACTIVITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVITY_TYPE" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERS_FRENDSHIP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAIN_USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="START_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERS_GROUP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GROUP_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="USERS_GROUP_MEMBERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USER_ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GROUP_ID" Type="Int64" Nullable="false" />
+          <Property Name="STATUS_CODE" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MEMBER_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <ComplexType Name="SP_GROUP_INVITATION_Result">
+          <Property Type="Int64" Name="GROUP_ID" Nullable="false" />
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="MEMBER_DATE" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_ACTIONS_Result">
+          <Property Type="Int32" Name="UNREAD_MESSAGE" Nullable="true" />
+          <Property Type="Int32" Name="UNACCEPTED_REQUEST" Nullable="true" />
+          <Property Type="Int32" Name="FOLLOWERS" Nullable="true" />
+          <Property Type="Int32" Name="FOLLOWING" Nullable="true" />
+          <Property Type="Int32" Name="UNACCEPTED_INVITATION" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_GROUP_Result">
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="grupYoneticisi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_GROUPS_Result">
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="grupYoneticisi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_GROUPS_AND_MYGROUPS_Result">
+          <Property Type="Int64" Name="groupID" Nullable="false" />
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="grupYoneticisi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="STATUS_CODE" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="UserId" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_GROUPS1_Result">
+          <Property Type="Int64" Name="groupID" Nullable="false" />
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="grupYoneticisi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserId" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="SP_ALL_GROUPS_Result">
+          <Property Type="Int64" Name="groupID" Nullable="false" />
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="grupYoneticisi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserId" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_GROUP_ACTIVITY_LIST_Result">
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" />
+          <Property Type="String" Name="kullaniciAdiSoyadi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="Int64" Name="RowNum" Nullable="true" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_ALL_USER_ACTIVITY_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="kullaniciAdiSoyadi" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="Int32" Name="RowNum" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" Precision="23" />
+          <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="ACTIVITY_TYPE" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="SP_GET_ALL_GROUPS_Result">
+          <Property Type="Int64" Name="groupID" Nullable="false" />
+          <Property Type="String" Name="GROUP_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="grupYoneticisi" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="PHOTO_PATH" Nullable="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" Precision="23" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SELCUKDBModelStoreContainer" CdmEntityContainer="SELCUKDBEntities1">
+          <FunctionImportMapping FunctionImportName="SP_ACTIVITY_LIST" FunctionName="SELCUKDBModel.Store.SP_ACTIVITY_LIST">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_ACTIVITY_LIST_Result">
+                <ScalarProperty Name="RowNum" ColumnName="RowNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="kullaniciAdiSoyadi" ColumnName="kullaniciAdiSoyadi" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_USERS_LOGIN" FunctionName="SELCUKDBModel.Store.SP_USERS_LOGIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_USERS_LOGIN_Result">
+                <ScalarProperty Name="USER_NO" ColumnName="USER_NO" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="FINISH_DATE" ColumnName="FINISH_DATE" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="DEPARTMAN_CODE" ColumnName="DEPARTMAN_CODE" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SEARCH_PROFILE" FunctionName="SELCUKDBModel.Store.SP_SEARCH_PROFILE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_SEARCH_PROFILE_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SEARCH_USER_PROFILE" FunctionName="SELCUKDBModel.Store.SP_SEARCH_USER_PROFILE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_SEARCH_USER_PROFILE_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_FRIEND_REQUEST_COUNT" FunctionName="SELCUKDBModel.Store.SP_GET_FRIEND_REQUEST_COUNT" />
+          <FunctionImportMapping FunctionImportName="SP_GET_FRIENDS" FunctionName="SELCUKDBModel.Store.SP_GET_FRIENDS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_FRIENDS_Result">
+                <ScalarProperty Name="NAME_SURNAME" ColumnName="NAME_SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="DEPARTMAN_CODE" ColumnName="DEPARTMAN_CODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="FINISH_DATE" ColumnName="FINISH_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_FRIENDSHIP_ACTION" FunctionName="SELCUKDBModel.Store.SP_FRIENDSHIP_ACTION" />
+          <FunctionImportMapping FunctionImportName="SP_GET_FOLLOWERS" FunctionName="SELCUKDBModel.Store.SP_GET_FOLLOWERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_FOLLOWERS_Result">
+                <ScalarProperty Name="NAME_SURNAME" ColumnName="NAME_SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="DEPARTMAN_CODE" ColumnName="DEPARTMAN_CODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="FINISH_DATE" ColumnName="FINISH_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SEARCH_PROFILE_FOR_GROUP" FunctionName="SELCUKDBModel.Store.SP_SEARCH_PROFILE_FOR_GROUP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_SEARCH_PROFILE_FOR_GROUP_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_ALL_ACTIONS" FunctionName="SELCUKDBModel.Store.SP_GET_ALL_ACTIONS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_ALL_ACTIONS_Result">
+                <ScalarProperty Name="UNREAD_MESSAGE" ColumnName="UNREAD_MESSAGE" />
+                <ScalarProperty Name="UNACCEPTED_REQUEST" ColumnName="UNACCEPTED_REQUEST" />
+                <ScalarProperty Name="FOLLOWERS" ColumnName="FOLLOWERS" />
+                <ScalarProperty Name="FOLLOWING" ColumnName="FOLLOWING" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MESSAGE_LIST1" FunctionName="SELCUKDBModel.Store.SP_MESSAGE_LIST" />
+          <FunctionImportMapping FunctionImportName="SP_USERS_MESSAGE_LIST" FunctionName="SELCUKDBModel.Store.SP_USERS_MESSAGE_LIST">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_USERS_MESSAGE_LIST_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="READ_FLAG" ColumnName="READ_FLAG" />
+                <ScalarProperty Name="READ_DATE" ColumnName="READ_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="SEND_RECEIVER_FLAG" ColumnName="SEND_RECEIVER_FLAG" />
+                <ScalarProperty Name="NAME_SURNAME" ColumnName="NAME_SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_USERS_MESSAGE_ALL" FunctionName="SELCUKDBModel.Store.SP_USERS_MESSAGE_ALL" />
+          <FunctionImportMapping FunctionImportName="SP_MESSAGE_ALL" FunctionName="SELCUKDBModel.Store.SP_MESSAGE_ALL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_MESSAGE_ALL_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="READ_FLAG" ColumnName="READ_FLAG" />
+                <ScalarProperty Name="READ_DATE" ColumnName="READ_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="SEND_RECEIVER_FLAG" ColumnName="SEND_RECEIVER_FLAG" />
+                <ScalarProperty Name="NAME_SURNAME" ColumnName="NAME_SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_DETAIL_SEARCH_USER_PROFILE1" FunctionName="SELCUKDBModel.Store.SP_DETAIL_SEARCH_USER_PROFILE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_DETAIL_SEARCH_USER_PROFILE1_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SEARCH_DETAIL_USER_PROFILE" FunctionName="SELCUKDBModel.Store.SP_SEARCH_DETAIL_USER_PROFILE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_SEARCH_DETAIL_USER_PROFILE_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_SEARCH_USER_PROFILE_FOR_GROUP" FunctionName="SELCUKDBModel.Store.SP_SEARCH_USER_PROFILE_FOR_GROUP">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_SEARCH_USER_PROFILE_FOR_GROUP_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="DEPARTMAN_CODE" ColumnName="DEPARTMAN_CODE" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_MEMBER_ACTION" FunctionName="SELCUKDBModel.Store.SP_MEMBER_ACTION" />
+          <FunctionImportMapping FunctionImportName="SP_GET_MEMBERS" FunctionName="SELCUKDBModel.Store.SP_GET_MEMBERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_MEMBERS_Result">
+                <ScalarProperty Name="NAME_SURNAME" ColumnName="NAME_SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="DEPARTMAN_CODE" ColumnName="DEPARTMAN_CODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="FINISH_DATE" ColumnName="FINISH_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="SELCUKDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACTIVATION">
+            <EntityTypeMapping TypeName="SELCUKDBModel.ACTIVATION">
+              <MappingFragment StoreEntitySet="ACTIVATION">
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ACTIVITY">
+            <EntityTypeMapping TypeName="SELCUKDBModel.ACTIVITY">
+              <MappingFragment StoreEntitySet="ACTIVITY">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ACTIVITY_TYPE" ColumnName="ACTIVITY_TYPE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SELCUKDBModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SELCUKDBModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SELCUKDBModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserRoles">
+            <EntityTypeMapping TypeName="SELCUKDBModel.AspNetUserRoles">
+              <MappingFragment StoreEntitySet="AspNetUserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SELCUKDBModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMENT">
+            <EntityTypeMapping TypeName="SELCUKDBModel.COMMENT">
+              <MappingFragment StoreEntitySet="COMMENT">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="COMMENT_DATE" ColumnName="COMMENT_DATE" />
+                <ScalarProperty Name="COMMENT1" ColumnName="COMMENT" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAVORITE">
+            <EntityTypeMapping TypeName="SELCUKDBModel.FAVORITE">
+              <MappingFragment StoreEntitySet="FAVORITE">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="FAVORITE_TYPE" ColumnName="FAVORITE_TYPE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GROUP_ACTIVITY">
+            <EntityTypeMapping TypeName="SELCUKDBModel.GROUP_ACTIVITY">
+              <MappingFragment StoreEntitySet="GROUP_ACTIVITY">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MESSAGES">
+            <EntityTypeMapping TypeName="SELCUKDBModel.MESSAGES">
+              <MappingFragment StoreEntitySet="MESSAGES">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="READ_DATE" ColumnName="READ_DATE" />
+                <ScalarProperty Name="READ_FLAG" ColumnName="READ_FLAG" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="RECEIVER_USER_ID" ColumnName="RECEIVER_USER_ID" />
+                <ScalarProperty Name="SENDER_USER_ID" ColumnName="SENDER_USER_ID" />
+                <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
+                <ScalarProperty Name="MESSAGE" ColumnName="MESSAGE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PARAMETER">
+            <EntityTypeMapping TypeName="SELCUKDBModel.PARAMETER">
+              <MappingFragment StoreEntitySet="PARAMETER">
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="PARAMETER_CODE" ColumnName="PARAMETER_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="SELCUKDBModel.USERS">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="IS_PRIVATE" ColumnName="IS_PRIVATE" />
+                <ScalarProperty Name="DEPARTMAN_CODE" ColumnName="DEPARTMAN_CODE" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="FINISH_DATE" ColumnName="FINISH_DATE" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS_ACTIVITY">
+            <EntityTypeMapping TypeName="SELCUKDBModel.USERS_ACTIVITY">
+              <MappingFragment StoreEntitySet="USERS_ACTIVITY">
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="ACTIVITY_TYPE" ColumnName="ACTIVITY_TYPE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS_FRENDSHIP">
+            <EntityTypeMapping TypeName="SELCUKDBModel.USERS_FRENDSHIP">
+              <MappingFragment StoreEntitySet="USERS_FRENDSHIP">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="MAIN_USER_ID" ColumnName="MAIN_USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS_GROUP">
+            <EntityTypeMapping TypeName="SELCUKDBModel.USERS_GROUP">
+              <MappingFragment StoreEntitySet="USERS_GROUP">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS_GROUP_MEMBERS">
+            <EntityTypeMapping TypeName="SELCUKDBModel.USERS_GROUP_MEMBERS">
+              <MappingFragment StoreEntitySet="USERS_GROUP_MEMBERS">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="MEMBER_DATE" ColumnName="MEMBER_DATE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GROUP_INVITATION" FunctionName="SELCUKDBModel.Store.SP_GROUP_INVITATION">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GROUP_INVITATION_Result">
+                <ScalarProperty Name="GROUP_ID" ColumnName="GROUP_ID" />
+                <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="MEMBER_DATE" ColumnName="MEMBER_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_ACTIONS" FunctionName="SELCUKDBModel.Store.SP_GET_ACTIONS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_ACTIONS_Result">
+                <ScalarProperty Name="UNREAD_MESSAGE" ColumnName="UNREAD_MESSAGE" />
+                <ScalarProperty Name="UNACCEPTED_REQUEST" ColumnName="UNACCEPTED_REQUEST" />
+                <ScalarProperty Name="FOLLOWERS" ColumnName="FOLLOWERS" />
+                <ScalarProperty Name="FOLLOWING" ColumnName="FOLLOWING" />
+                <ScalarProperty Name="UNACCEPTED_INVITATION" ColumnName="UNACCEPTED_INVITATION" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GROUP_ACTIVITY_LIST" FunctionName="SELCUKDBModel.Store.SP_GROUP_ACTIVITY_LIST" />
+          <FunctionImportMapping FunctionImportName="SP_GET_GROUPS_AND_MYGROUPS" FunctionName="SELCUKDBModel.Store.SP_GET_GROUPS_AND_MYGROUPS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_GROUPS_AND_MYGROUPS_Result">
+                <ScalarProperty Name="groupID" ColumnName="groupID" />
+                <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+                <ScalarProperty Name="grupYoneticisi" ColumnName="grupYoneticisi" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="STATUS_CODE" ColumnName="STATUS_CODE" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ALL_GROUPS" FunctionName="SELCUKDBModel.Store.SP_ALL_GROUPS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_ALL_GROUPS_Result">
+                <ScalarProperty Name="groupID" ColumnName="groupID" />
+                <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+                <ScalarProperty Name="grupYoneticisi" ColumnName="grupYoneticisi" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_GROUP_ACTIVITY_LIST" FunctionName="SELCUKDBModel.Store.SP_GET_GROUP_ACTIVITY_LIST">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_GROUP_ACTIVITY_LIST_Result">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="kullaniciAdiSoyadi" ColumnName="kullaniciAdiSoyadi" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="RowNum" ColumnName="RowNum" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SELCUKDBModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SELCUKDBModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SELCUKDBModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SELCUKDBModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SELCUKDBModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SELCUKDBModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SELCUKDBModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="SP_GET_USER_ACTIVITY1" FunctionName="SELCUKDBModel.Store.SP_GET_USER_ACTIVITY" />
+          <FunctionImportMapping FunctionImportName="SP_USER_ACTIVITY_LIST" FunctionName="SELCUKDBModel.Store.SP_USER_ACTIVITY_LIST" />
+          <FunctionImportMapping FunctionImportName="SP_GET_ALL_USER_ACTIVITY" FunctionName="SELCUKDBModel.Store.SP_GET_ALL_USER_ACTIVITY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_ALL_USER_ACTIVITY_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kullaniciAdiSoyadi" ColumnName="kullaniciAdiSoyadi" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="RowNum" ColumnName="RowNum" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ACTIVITY_TYPE" ColumnName="ACTIVITY_TYPE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GET_USER_ACTIVITY_LIST" FunctionName="SELCUKDBModel.Store.SP_GET_USER_ACTIVITY_LIST" />
+          <FunctionImportMapping FunctionImportName="SP_GET_ALL_GROUPS" FunctionName="SELCUKDBModel.Store.SP_GET_ALL_GROUPS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SELCUKDBModel.SP_GET_ALL_GROUPS_Result">
+                <ScalarProperty Name="groupID" ColumnName="groupID" />
+                <ScalarProperty Name="GROUP_NAME" ColumnName="GROUP_NAME" />
+                <ScalarProperty Name="grupYoneticisi" ColumnName="grupYoneticisi" />
+                <ScalarProperty Name="PHOTO_PATH" ColumnName="PHOTO_PATH" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,82 @@
+﻿@model SUNetwork.Models.MESSAGES
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MESSAGES</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MESSAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MESSAGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEND_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEND_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SENDER_USER_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SENDER_USER_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RECEIVER_USER_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RECEIVER_USER_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RECEIVE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RECEIVE_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.READ_FLAG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.READ_FLAG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.READ_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.READ_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

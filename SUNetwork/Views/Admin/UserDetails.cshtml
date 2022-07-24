@@ -1,0 +1,135 @@
+﻿@model SUNetwork.Models.USERS
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="Anadiv">
+    <div>
+        @*<img src="@Url.Content(Model.PHOTO_PATH)" width="100" height="100" alt="" />*@
+        @if (Model.PHOTO_PATH != "")
+            {
+            <img src="@Url.Content(Model.PHOTO_PATH)" width="100" height="100" alt="" />
+        }
+        else
+        {
+            <img src="~/Content/user.png" width="100" height="100" alt="" />
+        }
+
+    </div>
+
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                Adı
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NAME)
+            </dd>
+
+            <dt>
+                Soyadı
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SURNAME)
+            </dd>
+
+            <dt>
+                Eposta
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+
+            <dt>
+                Kullanıcı Tipi
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.USER_TYPE)
+            </dd>
+
+            <dt>
+                Başlama Yılı
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.START_DATE)
+            </dd>
+
+            <dt>
+                Bitirme Yılı
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FINISH_DATE)
+            </dd>
+
+            <dt>
+                Cinsiyet
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GENDER)
+            </dd>
+
+            <dt>
+                Bölüm
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DEPARTMAN_CODE)
+            </dd>
+
+            <dt>
+                Meslek
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JOB)
+            </dd>
+
+            @*<dt>
+                    Güncelleme Tarihi
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UPDATE_DATE)
+                </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Güncelle", "UserEdit", new { id = Model.USER_ID }) |
+    </p>
+</div>
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: 0.5px;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SUNetwork.Models.GROUP_ACTIVITY>
+
+@{
+    ViewBag.Title = "Grup Paylaşımı Sil";
+}
+
+<div class="Anadiv">
+
+    <table class="table">
+        <tr>
+            <th>
+                Grup ID
+            </th>
+            @*<th>
+                Kişi ID
+            </th>*@
+            <th>
+                Gönderi
+            </th>
+            <th>
+                Oluşturma Tarihi
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GROUP_ID)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.USER_ID)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPTION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UPDATE_DATE)
+                </td>
+                <td>
+                    @Html.ActionLink("Paylaşımı Sil", "GroupActivityDelete", new { id = item.ID })
+                </td>
+                
+            </tr>
+        }
+
+    </table>
+</div>
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>
+

@@ -1,0 +1,58 @@
+﻿@model SUNetwork.Models.USERS_FRENDSHIP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USERS_FRENDSHIP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MAIN_USER_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAIN_USER_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.START_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.START_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATUS_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATUS_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UPDATE_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UPDATE_DATE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Geri", "Index")
+</p>

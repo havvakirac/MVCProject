@@ -1,0 +1,102 @@
+﻿@model IEnumerable<SUNetwork.Models.USERS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>       
+       
+        <th>
+            Ad
+        </th>
+        <th>
+            Soyad
+        </th>
+        <th>
+            Eposta
+        </th>
+        <th>
+            Kullanıcı Durumu
+        </th>
+        <th>
+            Kullanıcı Tipi
+        </th>
+        <th>
+            Başlama Yılı
+        </th>
+        <th>
+            Bitiş Yılı
+        </th>
+        <th>
+            Profil Resmi
+        </th>
+        <th>
+           Cinsiyet
+        </th>
+        <th>
+            Bölüm
+        </th>
+        <th>
+            Meslek
+        </th>
+        <th>
+            Güncelleme Tarihi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SURNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER_TYPE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.START_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FINISH_DATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHOTO_PATH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GENDER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEPARTMAN_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPDATE_DATE)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.USER_ID }) |
+            @Html.ActionLink("Detay", "Details", new { id=item.USER_ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.USER_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,120 @@
+﻿@{
+    ViewBag.Title = "Admin Paneli";
+}
+<div class="Anadiv">
+    <table align="center">
+        <tr>
+            <td>
+                @*<button type="button" onclick="location.href='@Url.Action("MyAction", "MyController")'" />*@
+            <button id="btnUser" class="button" type="button" style="vertical-align:middle" onclick="location.href='@Url.Action("UserList","Admin")'">
+                <span>
+                    Kullanıcılar
+                </span>
+            </button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button id="btnActivity" class="button" style="vertical-align:middle" onclick="location.href='@Url.Action("ActivityList","Admin")'">
+                <span>
+                    Paylaşımlar
+                </span>
+            </button>
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            <button id="btnGroup" class="button" style="vertical-align:middle" onclick="location.href='@Url.Action("GroupList","Admin")'">
+                <span>
+                    Gruplar
+                </span>
+            </button>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button id="btnGrAct" class="button" style="vertical-align:middle" onclick="location.href='@Url.Action("GroupActivityList","Admin")'">
+                <span>
+                    Grup Paylaşımları
+                </span>
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="btnParametre" class="button" style="vertical-align:middle" onclick="location.href='@Url.Action("ParameterList","Admin")'">
+                <span>
+                    Parametre Listesi
+                </span>
+            </button>
+        </td>
+    </tr>
+</table>
+</div>
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #808080;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 300px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .button span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+            .button:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+</style>

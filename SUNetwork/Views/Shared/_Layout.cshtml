@@ -1,0 +1,195 @@
+﻿
+@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SUNETWORK</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*@Styles.Render("~/Content/bootstrap")*@
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="nav navbar-nav navbar-left">
+                    <img src="~/Content/ResimProfil/images.jpg" style="width:60px;
+                                                                    height: 50px;
+                                                                    border-radius: 300px;
+                                                                    -webkit-border-radius:300px;
+                                                                    -moz-border-radius: 150px;">
+                </div>
+                @Html.ActionLink("SUNETWORK", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+                <div class="navbar-collapse collapse">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Profil", "Details", "Users")</li>
+                            <li>@Html.ActionLink("Takip Ettiklerim", "Following", "UsersFriendship")</li>
+                            <li>@Html.ActionLink("Takipçilerim", "Followers", "UsersFriendship")</li>
+
+                            @if (this.User.IsInRole("admin"))
+                            {
+                                <li>@Html.ActionLink("Admin Paneli", "Index", "Admin")</li>
+                            }
+
+                            @* <li><label>Total Students:</label>  @ViewBag.CountRequest</li>*@
+                        </ul>
+                    }
+                    @Html.Partial("_LoginPartial")
+                </div>
+           </div>
+    </div>
+
+    <div class="Maindiv">
+        <table style="align-content:center">
+            <tr>
+                <td style="padding-top:0px; vertical-align:top; text-align:left">
+                    <div style="align-content:flex-start; width:200px">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <ul class="solListe2">
+                                <li>@Html.ActionLink("Yeni Grup Oluştur", "Create", "UsersGroup")</li>
+                                <li>@Html.ActionLink("Gruplar", "AllGroups", "UsersGroup")</li>
+                                <li>@Html.ActionLink("Gruplarım", "Index", "UsersGroup")</li>
+                                <li>@Html.ActionLink("Üye Olduklarım", "MyGroups", "UsersGroup")</li>
+                                <li>@Html.ActionLink("Mesajlar", "MessagePage", "UsersFriendship")</li>
+                                <li>@Html.ActionLink("Detaylı Ara", "SearchDetailUserProfile", "UsersFriendship")</li>
+                            </ul>
+                        }
+                    </div>
+                </td>
+                <td style="padding-top:1px; vertical-align:top">
+                    <div class="Anadiv1">
+                        @RenderBody()
+                    </div>
+
+                </td>
+                <td style="padding-top:1px; vertical-align:top; width:265px">
+                    <div style="align-content:flex-start; ">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <ul class="sagListe">
+                                <li style="color:red"> @Html.ActionLink("Mesajlar", "MessagePage", "UsersFriendship")@ViewBag.MesajSayisi</li>
+                                <li style="color:red"> @Html.ActionLink("Takipçilerim", "Followers", "UsersFriendship")@ViewBag.TakipciSayisi</li>
+                                <li style="color:red"> @Html.ActionLink("Takip Ettiklerim", "Following", "UsersFriendship")@ViewBag.TakipEttiklerim</li>
+                                <li style="color:red"> @Html.ActionLink("Takip İstekleri", "Followers", "UsersFriendship")@ViewBag.TakipIstekleri</li>
+                                <li style="color:red"> @Html.ActionLink("Grup Daveti", "MyGroups", "UsersGroup")@ViewBag.GrupDaveti</li>
+                            </ul>
+                        }
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<style>
+     .Anadiv1 {
+        width: 850px;
+        height: 100%;
+        margin-top: 1px;
+        text-align: center;
+        text-align-last: left;
+        box-shadow: 20px;
+        vertical-align: top;
+        }
+
+    .Maindiv {
+        align-content: center;
+        margin: 1px 1px 1px 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center
+    }
+
+
+    .solListe2 {
+        background-color: #FFF;
+        padding: 0px;
+        width: 196px;
+        border: 2px none #0080C0;
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        list-style-type: none;
+    }
+
+        .solListe2 li a {
+            display: block;
+            color: #000;
+            text-decoration: none;
+            margin: 0px;
+            /*width: 161px;*/
+            padding-top: 7px;
+            padding-right: 5px;
+            padding-bottom: 7px;
+            padding-left: 30px;
+            font-weight: bold;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        }
+
+            .solListe2 li a:hover {
+                color: #000;
+                background-color: #0080C0;
+            }
+
+
+    .sagListe {
+        background-color: #FFF;
+        padding: 0px;
+        /*width: 196px;*/
+        border: 2px none #0080C0;
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        list-style-type: none;
+        text-align:right;
+        float:right;
+    }
+
+        .sagListe li a {
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            margin: 0px;
+            /*width: 161px;*/
+            padding-top: 7px;
+            padding-right: 5px;
+            padding-bottom: 7px;
+            padding-left: 0px;
+            font-weight: bold;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        }
+
+            .sagListe li a:hover {
+                color: #000;
+                background-color: #0080C0;
+            }
+</style>

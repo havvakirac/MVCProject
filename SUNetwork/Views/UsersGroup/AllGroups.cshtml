@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SUNetwork.Models.SP_ALL_GROUPS_Result>
+
+@{
+    ViewBag.Title = "Gruplarım";
+}
+<div class="Anadiv">
+    <table class="table">
+        <tr>
+
+            <th>
+                Grup Adı
+            </th>
+            <th>
+                Grup Yöneticisi
+            </th>
+            <th>
+                Oluşturma Tarihi
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                @*<td><img src="@Url.Content(item.PHOTO_PATH)" width="50" height="50" alt="" /></td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.GROUP_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.grupYoneticisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CREATE_DATE)
+                </td>
+
+                <td>                       
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<style>
+    .Anadiv {
+        width: 800px;
+        height: 100%;
+        /*align-content: center;*/
+        margin-top: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: whitesmoke;
+        border-bottom-style: groove;
+        border-left-style: inset;
+        margin-top: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border: 1px solid black;
+        box-shadow: 0 0 6px 4px #70767c;
+        /*background-color: rgba(216, 223, 234, 0.08);*/
+        text-align: justify;
+        text-align-last: left;
+        box-shadow: 20px;
+    }
+</style>

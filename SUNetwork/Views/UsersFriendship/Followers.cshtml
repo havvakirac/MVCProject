@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SUNetwork.Models.SP_GET_FOLLOWERS_Result>
+
+@{
+    ViewBag.Title = "Takipçiler";
+}
+
+<div class="Anadiv">
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                AD
+            </th>
+            <th>
+                SOYAD
+            </th>
+            @*<th>
+                    MESLEK
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+
+                <td>
+                    @if (item.PHOTO_PATH != "")
+                    {
+                        <img src="@Url.Content(item.PHOTO_PATH)" width="50" height="50" alt="" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/user.png" width="50" height="50" alt="" />
+                    }                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SURNAME)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.JOB)
+                    </td>*@
+                <td>
+                    @if (item.STATUS_CODE == "W")
+                {
+                        @Html.ActionLink("Kabul Et", "AcceptFriendRequest", new { id = item.USER_ID })
+                        <span>|</span>
+                        @Html.ActionLink("Reddet", "Reject", new { id = item.USER_ID })
+                    }
+                    else
+                    {
+                        @*@Html.ActionLink("Detay", "UserDetails","Users", new { id = item.USER_ID })*@
+                        @Html.ActionLink("Detay", "UserDetails", new { Controller = "Users", id = item.USER_ID })
+                        <span>|</span>
+                        @Html.ActionLink("Engelle", "UserDetails", new { Controller = "Users", id = item.USER_ID })
+
+                    }
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+<style>
+   .Anadiv {
+     width: 800px;
+    height: 100%;
+    /*align-content: center;*/
+    margin-top: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    border-bottom-style: groove;
+    border-left-style: inset;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid black;
+    box-shadow: 0 0 6px 4px #70767c;
+    /*background-color: rgba(216, 223, 234, 0.08);*/
+    text-align: justify;
+    text-align-last: left;
+    box-shadow: 20px;
+}
+</style>
